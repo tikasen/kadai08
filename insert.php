@@ -14,12 +14,11 @@ try {
 
 
 //３．SQLを作って送信する。
-$stmt = $pdo->prepare("INSERT INTO gs_bm_table(id, b_name, b_url, b_comment,img_name,img,
-t_time )VALUES(NULL, :b_name, :b_url, :b_comment,:img_name, sysdate())");
-$stmt->bindValue(':b_name', $b_name, PDO::PARAM_STR); 
+$stmt = $pdo->prepare("INSERT INTO gs_bm_table(id, b_name, b_url, b_comment,t_time )VALUES(NULL, :b_name, :b_url, :b_comment, sysdate())");
+$stmt->bindValue(':b_name', $b_name, PDO::PARAM_STR);
 $stmt->bindValue(':b_url', $b_url, PDO::PARAM_STR);
 $stmt->bindValue(':b_comment', $b_comment, PDO::PARAM_STR);
-$stmt->bindValue(':img_name', $file_name, PDO::PARAM_STR);
+//$stmt->bindValue(':img_name', $file_name, PDO::PARAM_STR);
 
 $status = $stmt->execute();
 
